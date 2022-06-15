@@ -6,28 +6,35 @@ class CleanerController {
         const { name, availability, serviceValor, contact } = request.body;
 
         Cleaner.findOne({ contact })
-            .then((cleaner) => {
-                if (cleaner) {
+            .then((cleanerAlreadyExists) => {
+                if (cleanerAlreadyExists) {
                     return response
                         .status(400)
-                        .json({ error: "Already exists in database" });
+                        .json({ error: "Cleaner already exists" });
+                } else {
+                    Cleaner.create({
+                        name,
+                        availability,
+                        serviceValor,
+                        contact,
+                    })
+                        .then((cleaner) => {
+                            console.log("d");
+
+                            return response.status(200).json({ cleaner });
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                            return response
+                                .status(500)
+                                .json({ error: err.message });
+                        });
                 }
             })
-            .catch(() => {
-                Cleaner.create({
-                    name,
-                    availability,
-                    serviceValor,
-                    contact,
-                })
-                    .then((cleaner) => {
-                        return response.status(200).json({ cleaner });
-                    })
-                    .catch((err) => {
-                        return response
-                            .status(500)
-                            .json({ error: err.message });
-                    });
+            .catch((error) => {
+                return response
+                    .status(500)
+                    .send({ error: "Registration Failed" });
             });
     }
 
@@ -37,6 +44,7 @@ class CleanerController {
                 return response.status(200).json({ cleaners });
             })
             .catch((err) => {
+                console.log(err);
                 return response.status(500).json({ error: err.message });
             });
     }
