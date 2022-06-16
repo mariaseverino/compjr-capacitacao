@@ -28,6 +28,19 @@
 
 Desafio desenvolvido para a capacitação de backend da Compjúnior. CRUD para um aplicativo de contratação de faxineiros.
 
+## 📌 Especificações
+
+-   [x] O projeto deve ter no mínimo 1 schema e 1 controller;
+-   [x] Deve conter no mínimo 1 CRUD completo;
+-   [x] Documentação no Swagger;
+-   [x] Deve ser possível testar todas as requisições;
+-   [x] Criar usuário, com e-mail e senha e realizar login;
+-   [x] Mandar imagem com foto do usuário na mesma rota em que ele é criado;
+-   [x] Ter uma rota que só pode ser acessado com token de autenticação;
+-   [x] Ter um usuário administrador que terá permissões diferentes de um usuário comum;
+-   [x] Função de recuperar senha;
+-   [x] Fazer com que o usuário receba um email automático;
+
 ## 🚀 Tecnologias
 
 -   Node
