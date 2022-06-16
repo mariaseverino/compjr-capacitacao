@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import User from "../schemas/UserSchema.js";
-import auth from "../../config/auth.js";
+import auth from "../../config/AuthConfig.js";
 import Mailer from "../../modules/Mailer.js";
 
 function generateToken(id, isAdmin) {
@@ -12,7 +12,7 @@ function generateToken(id, isAdmin) {
     return jwt.sign({ uid: id }, auth.user.secret, { expiresIn: 86400 });
 }
 
-class AuthController {
+export default {
     register(request, response) {
         const { username, email, password, isAdmin } = request.body;
         const { file } = request;
@@ -34,7 +34,9 @@ class AuthController {
                         })
                             .then((user) => {
                                 user.password = undefined;
-                                return response.status(200).json({ user });
+                                return response
+                                    .status(200)
+                                    .json({ message: "Successful operation" });
                             })
                             .catch((error) => {
                                 console.log("error", error);
@@ -44,7 +46,7 @@ class AuthController {
                             });
                     } else {
                         return response
-                            .status(400)
+                            .status(404)
                             .json({ error: "No image send" });
                     }
                 }
@@ -54,7 +56,7 @@ class AuthController {
                     .status(500)
                     .json({ error: "Registration Failed" });
             });
-    }
+    },
 
     login(request, response) {
         const { email, password } = request.body;
@@ -72,7 +74,7 @@ class AuthController {
                         } else {
                             return response
                                 .status(400)
-                                .json({ error: "Invalid password" }); //mudar depois, não é muito bom
+                                .json({ error: "Invalid password" });
                         }
                     });
                 } else {
@@ -84,7 +86,7 @@ class AuthController {
             .catch((error) => {
                 return response.status(500).json({ error: "Login Failed" });
             });
-    }
+    },
 
     forgotPassword(request, response) {
         const { email } = request.body;
@@ -141,7 +143,7 @@ class AuthController {
                     .status(500)
                     .json({ error: "Internal server error" });
             });
-    }
+    },
 
     resetPassword(request, response) {
         const { email, newPassword, token } = request.body;
@@ -190,7 +192,5 @@ class AuthController {
                     .status(500)
                     .json({ error: "Internal server error" });
             });
-    }
-}
-
-export default AuthController;
+    },
+};

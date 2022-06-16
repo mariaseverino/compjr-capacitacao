@@ -1,7 +1,7 @@
 import mongo from "mongoose";
 import Cleaner from "../schemas/CleanerSchema.js";
 
-class CleanerController {
+export default {
     create(request, response) {
         const { name, availability, serviceValor, contact } = request.body;
 
@@ -18,16 +18,16 @@ class CleanerController {
                         serviceValor,
                         contact,
                     })
-                        .then((cleaner) => {
-                            console.log("d");
-
-                            return response.status(200).json({ cleaner });
+                        .then(() => {
+                            return response
+                                .status(200)
+                                .json({ message: "Successful operation" });
                         })
                         .catch((err) => {
                             console.log(err);
                             return response
                                 .status(500)
-                                .json({ error: err.message });
+                                .json({ error: "Registration Failed" });
                         });
                 }
             })
@@ -36,7 +36,7 @@ class CleanerController {
                     .status(500)
                     .send({ error: "Registration Failed" });
             });
-    }
+    },
 
     index(request, response) {
         Cleaner.find()
@@ -45,9 +45,11 @@ class CleanerController {
             })
             .catch((err) => {
                 console.log(err);
-                return response.status(500).json({ error: err.message });
+                return response
+                    .status(500)
+                    .json({ error: "Internal server error" });
             });
-    }
+    },
 
     update(request, response) {
         const id = request.params.id;
@@ -64,14 +66,20 @@ class CleanerController {
         })
             .then((cleaner) => {
                 if (!cleaner) {
-                    return response.status(404).json({ error: "Not found" });
+                    return response
+                        .status(404)
+                        .json({ error: "Cleaner not found" });
                 }
-                return response.status(200).json({ cleaner });
+                return response
+                    .status(200)
+                    .json({ message: "Successful operation" });
             })
             .catch((err) => {
-                return response.status(500).json({ error: err.message });
+                return response
+                    .status(500)
+                    .json({ error: "Internal server error" });
             });
-    }
+    },
 
     delete(request, response) {
         const id = request.params.id;
@@ -83,14 +91,16 @@ class CleanerController {
         Cleaner.findByIdAndDelete(id)
             .then((cleaner) => {
                 if (!cleaner) {
-                    return response.status(404).json({ error: "Not found" });
+                    return response
+                        .status(404)
+                        .json({ error: "Cleaner not found" });
                 }
-                return response.status(200).json({ cleaner });
+                return response
+                    .status(200)
+                    .json({ message: "Successful operation" });
             })
             .catch((err) => {
                 return response.status(500).json({ error: err.message });
             });
-    }
-}
-
-export default CleanerController;
+    },
+};

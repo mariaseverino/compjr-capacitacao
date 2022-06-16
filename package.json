@@ -21,7 +21,9 @@
         "nodemailer": "^6.7.5",
         "nodemailer-express-handlebars": "^5.0.0",
         "nodemon": "^2.0.16",
-        "slugify": "^1.6.5"
+        "slugify": "^1.6.5",
+        "swagger-jsdoc": "^6.2.1",
+        "swagger-ui-express": "^4.4.0"
     },
     "type": "module"
 }

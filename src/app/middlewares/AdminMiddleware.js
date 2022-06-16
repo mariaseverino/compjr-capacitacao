@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import authConfig from "../../config/auth.js";
+import AuthConfig from "../../config/AuthConfig.js";
 
 export default (request, response, next) => {
     const authHeader = request.headers.authorization;
@@ -21,7 +21,7 @@ export default (request, response, next) => {
                 .json({ error: "No valid token provided" });
         }
 
-        jwt.verify(token, authConfig.user.secret, (error, decoded) => {
+        jwt.verify(token, AuthConfig.admin.secret, (error, decoded) => {
             if (error) {
                 return response
                     .status(401)
