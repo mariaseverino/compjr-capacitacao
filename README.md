@@ -1,4 +1,4 @@
-# Capacitação CompJr
+# Capacitação Backend CompJunior
 
 <div align="center">
 <a target="_blank" href="https://icons8.com/icon/116707/vassoura"><img alt="livro" src="./assets/vassoura.png" ></a>
@@ -13,27 +13,31 @@
 </div>
 
 <p align="center">
- <a href="#Sobre">Sobre</a> •
- <a href="#Tecnologias">Tecnologias</a> •
- <a href="#Estrutura de Diretorios">Estrutura de diretórios</a>
+    <a href="#">Sobre</a> •
+    <a href="#">Requisitos mínimos</a> •
+    <a href="#">Para ir além</a> •
+    <a href="#">Tecnologias</a>
+
 </p>
 
 <p align="center">
- <a href="#Como executar o projeto">Como executar o projeto</a> •
- <a href="#Como executar o projeto">Acessando documentação</a>
-
+    <a href="#">Estrutura de diretórios</a> •
+    <a href="#">Como executar o projeto</a>
 </p>
 
 ## ✨ Sobre
 
-Desafio desenvolvido para a capacitação de backend da Compjúnior. CRUD para um aplicativo de contratação de faxineiros.
+Desafio desenvolvido para a capacitação de backend da CompJunior. CRUD para um aplicativo de contratação de faxineiros.
 
-## 📌 Especificações
+## 📌 Especificações mínimas
 
 -   [x] O projeto deve ter no mínimo 1 schema e 1 controller;
 -   [x] Deve conter no mínimo 1 CRUD completo;
 -   [x] Documentação no Swagger;
 -   [x] Deve ser possível testar todas as requisições;
+
+## 🚀 Para ir além
+
 -   [x] Criar usuário, com e-mail e senha e realizar login;
 -   [x] Mandar imagem com foto do usuário na mesma rota em que ele é criado;
 -   [x] Ter uma rota que só pode ser acessado com token de autenticação;
@@ -41,7 +45,7 @@ Desafio desenvolvido para a capacitação de backend da Compjúnior. CRUD para u
 -   [x] Função de recuperar senha;
 -   [x] Fazer com que o usuário receba um email automático;
 
-## 🚀 Tecnologias
+## ⚡️ Tecnologias
 
 -   Node
 -   MongoDB
