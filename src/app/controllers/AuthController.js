@@ -120,7 +120,7 @@ export default {
                                         });
                                     } else {
                                         return response.status(200).json({
-                                            message: "Email send with success",
+                                            message: "Successful operation",
                                         });
                                     }
                                 }

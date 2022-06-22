@@ -118,7 +118,6 @@ export default {
                         in: "path",
                         required: true,
                         type: "string",
-                        example: "62aa164d82f410ca6c36c024",
                     },
                     {
                         in: "body",
@@ -178,7 +177,6 @@ export default {
                         in: "path",
                         required: true,
                         type: "string",
-                        example: "62aa164d82f410ca6c36c024",
                     },
                 ],
                 responses: {
@@ -238,16 +236,34 @@ export default {
                 produces: "application/json",
                 parameters: [
                     {
-                        in: "body",
-                        name: "body",
+                        name: "username",
+                        in: "multipart",
                         required: true,
-                        schema: { $ref: "#/definitions/User" },
+                        type: "string",
+                    },
+                    {
+                        name: "email",
+                        in: "multipart",
+                        required: true,
+                        type: "string",
+                    },
+                    {
+                        name: "password",
+                        in: "multipart",
+                        required: true,
+                        type: "string",
                     },
                     {
                         name: "icon",
-                        in: "form-data",
+                        in: "multipart",
                         required: true,
                         type: "file",
+                    },
+                    {
+                        name: "isAdmin",
+                        in: "multipart",
+                        required: true,
+                        type: "boolean",
                     },
                 ],
                 responses: {
